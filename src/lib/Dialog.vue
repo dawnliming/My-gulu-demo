@@ -1,18 +1,20 @@
 <template>
-  <div class="gulu-dialog-overlay"></div>
-  <div class="gulu-dialog-wrapper">
-    <div class="gulu-dialog">
-      <header>标题 <span class="gulu-dialog-close"></span></header>
-      <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
-      </main>
-      <footer>
-        <Button level="main">OK</Button>
-        <Button>Cancel</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="gulu-dialog-overlay"></div>
+    <div class="gulu-dialog-wrapper">
+      <div class="gulu-dialog">
+        <header>标题 <span class="gulu-dialog-close"></span></header>
+        <main>
+          <p>第一行字</p>
+          <p>第二行字</p>
+        </main>
+        <footer>
+          <Button level="main">OK</Button>
+          <Button>Cancel</Button>
+        </footer>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script lang="ts">
@@ -20,7 +22,13 @@ import Button from "./Button.vue";
 
 export default {
   name: "Dialog",
-  components: {Button}
+  components: {Button},
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 
@@ -28,14 +36,14 @@ export default {
 $radius: 4px;
 $border-color: #d9d9d9;
 
-.gulu-dialog{
+.gulu-dialog {
   background: white;
   border-radius: $radius;
   box-shadow: 0 0 3px fade_out(black, 0.5);
   min-width: 15em;
   max-width: 90%;
 
-  &-overlay{
+  &-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -45,7 +53,7 @@ $border-color: #d9d9d9;
     z-index: 10;
   }
 
-  &-wrapper{
+  &-wrapper {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -53,7 +61,7 @@ $border-color: #d9d9d9;
     z-index: 11;
   }
 
-  >header{
+  > header {
     padding: 12px 16px;
     border-bottom: 1px solid $border-color;
     display: flex;
@@ -62,17 +70,17 @@ $border-color: #d9d9d9;
     font-size: 20px;
   }
 
-  >main{
+  > main {
     padding: 12px 16px;
   }
 
-  >footer{
+  > footer {
     border-top: 1px solid $border-color;
     padding: 12px 16px;
     text-align: right;
   }
 
-  &-close{
+  &-close {
     position: relative;
     display: inline-block;
     width: 16px;
@@ -80,7 +88,7 @@ $border-color: #d9d9d9;
     cursor: pointer;
 
     &::before,
-    &::after{
+    &::after {
       content: '';
       position: absolute;
       height: 1px;
@@ -90,11 +98,11 @@ $border-color: #d9d9d9;
       left: 50%;
     }
 
-    &::before{
+    &::before {
       transform: translate(-50%, -50%) rotate(-45deg);
     }
 
-    &::after{
+    &::after {
       transform: translate(-50%, -50%) rotate(45deg);
     }
   }
