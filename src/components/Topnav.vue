@@ -15,9 +15,9 @@ import {inject, Ref} from "vue";
 
 export default {
   name: 'Topnav',
-  setup(){
+  setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible')
-    const toggleMenu = ()=>{
+    const toggleMenu = () => {
       menuVisible.value = !menuVisible.value
     }
     return {toggleMenu}
@@ -25,8 +25,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped >
-.topNav{
+<style lang="scss" scoped>
+.topNav {
   padding: 16px;
   display: flex;
   background: pink;
@@ -37,20 +37,23 @@ export default {
   z-index: 10;
   justify-content: center;
   align-items: center;
-  > .logo{
+
+  > .logo {
     max-width: 6em;
     margin-right: auto;
   }
-  > .menu{
+
+  > .menu {
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
-    > li{
+
+    > li {
       margin: 0 1em;
     }
   }
 
-  > .toggleAside{
+  > .toggleAside {
     width: 24px;
     height: 24px;
     background: red;
@@ -60,10 +63,17 @@ export default {
     transform: translateY(-50%);
     display: none;
   }
+
   @media (max-width: 500px) {
-    > .menu{display: none}
-    > .logo{margin: 0 auto}
-    > .toggleAside{display: inline-block;}
+    > .menu {
+      display: none
+    }
+    > .logo {
+      margin: 0 auto
+    }
+    > .toggleAside {
+      display: inline-block;
+    }
   }
 }
 </style>
