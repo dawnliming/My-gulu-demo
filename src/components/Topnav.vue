@@ -1,10 +1,17 @@
 <template>
   <div class="topNav">
-    <span class="toggleAside" @click="toggleMenu"></span>
-    <div class="logo">LOGO</div>
+    <svg v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
+      <use xlink:href="#icon-menu"></use>
+    </svg>
+    <div class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-king"></use>
+      </svg>
+    </div>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>
+        <router-link to="/doc">文档</router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -15,6 +22,12 @@ import {inject, Ref} from "vue";
 
 export default {
   name: 'Topnav',
+  props:{
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false
+    }
+  },
   setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible')
     const toggleMenu = () => {
@@ -26,10 +39,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$color: #007974;
+
 .topNav {
+  color: $color;
   padding: 16px;
   display: flex;
-  background: pink;
   position: fixed;
   top: 0;
   left: 0;
@@ -41,6 +56,11 @@ export default {
   > .logo {
     max-width: 6em;
     margin-right: auto;
+
+    >svg {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   > .menu {
@@ -54,14 +74,14 @@ export default {
   }
 
   > .toggleAside {
-    width: 24px;
-    height: 24px;
-    background: red;
+    width: 32px;
+    height: 32px;
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
     display: none;
+    background: fade-out(black, 0.9);
   }
 
   @media (max-width: 500px) {
