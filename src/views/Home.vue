@@ -103,7 +103,7 @@ $color: #007974;
   align-items: center;
   flex-direction: column;
 
-  > .actions {
+  >.actions {
     padding: 8px 0;
 
     a {

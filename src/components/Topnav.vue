@@ -3,11 +3,11 @@
     <svg v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
       <use xlink:href="#icon-menu"></use>
     </svg>
-    <div class="logo">
+    <router-link to="/" class="logo">
       <svg class="icon">
         <use xlink:href="#icon-king"></use>
       </svg>
-    </div>
+    </router-link>
     <ul class="menu">
       <li>
         <router-link to="/doc">文档</router-link>
