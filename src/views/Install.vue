@@ -1,15 +1,15 @@
 <template>
-  <div>
-    安装
-  </div>
+  <article class="markdown-body" v-html="md">
+  </article>
 </template>
 
 <script>
+import md from '../mardown/install.md';
 export default {
-  name: "Install"
+  data() {
+    return {
+      md
+    }
+  }
 }
 </script>
-
-<style scoped>
-
-</style>
